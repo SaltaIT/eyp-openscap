@@ -16,64 +16,64 @@ class openscap::scanner::install inherits openscap::scanner {
     creates => $openscap::basedir,
   }
 
-  file { $openscap::basedir:
+  file { $openscap::scanner::basedir:
     ensure  => 'directory',
     owner   => 'root',
     group   => 'root',
     mode    => '0700',
-    require => Exec["openscap scanner mkdir -p ${openscap::basedir}"],
+    require => Exec["openscap scanner mkdir -p ${openscap::scanner::basedir}"],
   }
 
   exec { "openscap scanner mkdir -p ${openscap::basedir}/profiles":
-    command => "mkdir -p ${openscap::basedir}/profiles",
-    creates => "${openscap::basedir}/profiles",
+    command => "mkdir -p ${openscap::scanner::basedir}/profiles",
+    creates => "${openscap::scanner::basedir}/profiles",
   }
 
-  file { "${openscap::basedir}/profiles":
+  file { "${openscap::scanner::basedir}/profiles":
     ensure  => 'directory',
     owner   => 'root',
     group   => 'root',
     mode    => '0700',
-    require => Exec["openscap scanner mkdir -p ${openscap::basedir}/profiles"],
+    require => Exec["openscap scanner mkdir -p ${openscap::scanner::basedir}/profiles"],
   }
 
-  exec { "openscap scanner mkdir -p ${openscap::basedir}/xccdf":
-    command => "mkdir -p ${openscap::basedir}/xccdf",
-    creates => "${openscap::basedir}/xccdf",
+  exec { "openscap scanner mkdir -p ${openscap::scanner::basedir}/xccdf":
+    command => "mkdir -p ${openscap::scanner::basedir}/xccdf",
+    creates => "${openscap::scanner::basedir}/xccdf",
   }
 
-  file { "${openscap::basedir}/xccdf":
+  file { "${openscap::scanner::basedir}/xccdf":
     ensure  => 'directory',
     owner   => 'root',
     group   => 'root',
     mode    => '0700',
-    require => Exec["openscap scanner mkdir -p ${openscap::basedir}/xccdf"],
+    require => Exec["openscap scanner mkdir -p ${openscap::scanner::basedir}/xccdf"],
   }
 
-  exec { "openscap scanner mkdir -p ${openscap::basedir}/results":
-    command => "mkdir -p ${openscap::basedir}/results",
-    creates => "${openscap::basedir}/results",
+  exec { "openscap scanner mkdir -p ${openscap::scanner::basedir}/results":
+    command => "mkdir -p ${openscap::scanner::basedir}/results",
+    creates => "${openscap::scanner::basedir}/results",
   }
 
-  file { "${openscap::basedir}/results":
+  file { "${openscap::scanner::basedir}/results":
     ensure  => 'directory',
     owner   => 'root',
     group   => 'root',
     mode    => '0700',
-    require => Exec["openscap scanner mkdir -p ${openscap::basedir}/results"],
+    require => Exec["openscap scanner mkdir -p ${openscap::scanner::basedir}/results"],
   }
 
-  exec { "openscap scanner mkdir -p ${openscap::basedir}/reports":
-    command => "mkdir -p ${openscap::basedir}/reports",
-    creates => "${openscap::basedir}/reports",
+  exec { "openscap scanner mkdir -p ${openscap::scanner::basedir}/reports":
+    command => "mkdir -p ${openscap::scanner::basedir}/reports",
+    creates => "${openscap::scanner::basedir}/reports",
   }
 
-  file { "${openscap::basedir}/reports":
+  file { "${openscap::scanner::basedir}/reports":
     ensure  => 'directory',
     owner   => 'root',
     group   => 'root',
     mode    => '0700',
-    require => Exec["openscap scanner mkdir -p ${openscap::basedir}/reports"],
+    require => Exec["openscap scanner mkdir -p ${openscap::scanner::basedir}/reports"],
   }
 
 }
