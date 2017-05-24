@@ -2,7 +2,7 @@
   "name": "eyp-openscap",
   "version": "0.1.0",
   "author": "eyp",
-  "summary": null,
+  "summary": "openscap scanner",
   "license": "Apache-2.0",
   "source": "https://github.com/NTTCom-MS/eyp-openscap",
   "project_page": null,
