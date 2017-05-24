@@ -2,8 +2,8 @@
 
 
 oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile_name %> \
-     --results <%= scope.lookupvar('openscap::basedir') %>/results/<%= @profile_name %>.$(date +%Y%m%d%H%M).html \
-     --report <%= scope.lookupvar('openscap::basedir') %>/reports/<%= @profile_name %>.$(date +%Y%m%d%H%M).html \
-     --tailoring-file <%= scope.lookupvar('openscap::basedir') %>/profiles/<%= @profile_name %>.xml \
+     --results <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile_name %>.$(date +%Y%m%d%H%M).html \
+     --report <%= scope.lookupvar('openscap::scanner::basedir') %>/reports/<%= @profile_name %>.$(date +%Y%m%d%H%M).html \
+     --tailoring-file <%= scope.lookupvar('openscap::scanner::basedir') %>/profiles/<%= @profile_name %>.xml \
      --cpe <%= scope.lookupvar('openscap::params::xccdf_cpe') %> \
      <%= scope.lookupvar('openscap::params::xccdf') %> > /dev/null 2>&1
