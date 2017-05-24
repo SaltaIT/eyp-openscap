@@ -1,8 +1,8 @@
 define openscan::scanner::profile (
                                     $profile_name = $name,
-                                    $ensure = 'present',
-                                    $source = undef,
-                                    $source_url = undef,
+                                    $ensure       = 'present',
+                                    $source       = undef,
+                                    $source_url   = undef,
                                   ) {
 
   include openscap::scanner
