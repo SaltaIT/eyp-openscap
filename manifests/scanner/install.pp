@@ -11,7 +11,7 @@ class openscap::scanner::install inherits openscap::scanner {
     }
   }
 
-  exec { "openscap scanner mkdir -p ${openscap:::scanner:basedir}":
+  exec { "openscap scanner mkdir -p ${openscap::scanner::basedir}":
     command => "mkdir -p ${openscap::scanner::basedir}",
     creates => $openscap::scanner::basedir,
   }
