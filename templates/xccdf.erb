@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile_name %> \
-     --results <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile_name %>.$(date +%Y%m%d%H%M).html \
-     --report <%= scope.lookupvar('openscap::scanner::basedir') %>/reports/<%= @profile_name %>.$(date +%Y%m%d%H%M).html \
-     --tailoring-file <%= scope.lookupvar('openscap::scanner::basedir') %>/profiles/<%= @profile_name %>.xml \
+oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile %> \
+     --results <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.$(date +%Y%m%d%H%M).html \
+     --report <%= scope.lookupvar('openscap::scanner::basedir') %>/reports/<%= @profile %>.$(date +%Y%m%d%H%M).html \
+     --tailoring-file <%= scope.lookupvar('openscap::scanner::basedir') %>/profiles/<%= @profile %>.xml \
      --cpe <%= scope.lookupvar('openscap::params::xccdf_cpe') %> \
      <%= scope.lookupvar('openscap::params::xccdf') %> > /dev/null 2>&1
