@@ -24,7 +24,7 @@ class openscap::scanner::install inherits openscap::scanner {
     require => Exec["openscap scanner mkdir -p ${openscap::scanner::basedir}"],
   }
 
-  exec { "openscap scanner mkdir -p ${openscap::basedir}/profiles":
+  exec { "openscap scanner mkdir -p ${openscap::scanner::basedir}/profiles":
     command => "mkdir -p ${openscap::scanner::basedir}/profiles",
     creates => "${openscap::scanner::basedir}/profiles",
   }
