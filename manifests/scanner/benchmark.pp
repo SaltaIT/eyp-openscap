@@ -7,5 +7,6 @@
 #       /usr/share/xml/scap/ssg/content/ssg-centos7-xccdf.xml
 #
 define openscap::scanner::benchmark() {
-
+  include openscap::scanner
+  
 }
