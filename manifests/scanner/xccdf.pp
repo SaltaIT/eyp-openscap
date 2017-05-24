@@ -6,7 +6,11 @@
 #       --cpe /usr/share/xml/scap/ssg/content/ssg-rhel7-cpe-dictionary.xml
 #       /usr/share/xml/scap/ssg/content/ssg-centos7-xccdf.xml
 #
-define openscap::scanner::benchmark() {
+define openscap::scanner::xccdf (
+                                  $remediate = false,
+                                ) {
+
   include openscap::scanner
-  
+
+
 }
