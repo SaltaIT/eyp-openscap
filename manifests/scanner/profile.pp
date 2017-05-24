@@ -1,4 +1,4 @@
-define openscan::scanner::profile (
+define openscap::scanner::profile (
                                     $profile_name = $name,
                                     $ensure       = 'present',
                                     $source       = undef,
