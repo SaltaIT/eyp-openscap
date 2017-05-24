@@ -50,4 +50,30 @@ class openscap::scanner::install inherits openscap::scanner {
     require => Exec["openscap scanner mkdir -p ${openscap::basedir}/xccdf"],
   }
 
+  exec { "openscap scanner mkdir -p ${openscap::basedir}/results":
+    command => "mkdir -p ${openscap::basedir}/results",
+    creates => "${openscap::basedir}/results",
+  }
+
+  file { "${openscap::basedir}/results":
+    ensure  => 'directory',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0700',
+    require => Exec["openscap scanner mkdir -p ${openscap::basedir}/results"],
+  }
+
+  exec { "openscap scanner mkdir -p ${openscap::basedir}/reports":
+    command => "mkdir -p ${openscap::basedir}/reports",
+    creates => "${openscap::basedir}/reports",
+  }
+
+  file { "${openscap::basedir}/reports":
+    ensure  => 'directory',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0700',
+    require => Exec["openscap scanner mkdir -p ${openscap::basedir}/reports"],
+  }
+
 }
