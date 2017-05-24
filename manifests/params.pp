@@ -1,6 +1,6 @@
 class openscap::params {
 
-  $scanner_package_name='openscap-scanner'
+  $scanner_package_name=[ 'openscap-scanner', 'scap-security-guide' ]
   $service_name='openscap'
 
   case $::osfamily
