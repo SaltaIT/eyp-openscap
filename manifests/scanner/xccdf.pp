@@ -30,7 +30,7 @@ define openscap::scanner::xccdf (
 
   include openscap::scanner
 
-  file { "${openscap::scanner::basedir}/xccdf/${xccdf_name}":
+  file { "${openscap::scanner::basedir}/xccdf/${xccdf_name}.sh":
     ensure  => $ensure,
     owner   => 'root',
     group   => 'root',
