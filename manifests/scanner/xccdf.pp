@@ -24,8 +24,14 @@
 define openscap::scanner::xccdf (
                                   $profile,
                                   $xccdf_name = $name,
-                                  $ensure = 'present',
-                                  $remediate = false,
+                                  $ensure     = 'present',
+                                  $remediate  = false,
+                                  $hour       = '2',
+                                  $minute     = '0',
+                                  $month      = undef,
+                                  $monthday   = undef,
+                                  $weekday    = undef,
+                                  $setcron    = true,
                                 ) {
 
   include openscap::scanner
@@ -36,6 +42,20 @@ define openscap::scanner::xccdf (
     group   => 'root',
     mode    => '0500',
     content => template("${module_name}/xccdf.erb"),
+  }
+
+  if($setcron)
+  {
+    cron { "cronjob openscap xccdf ${xccdf_name}":
+      command  => "${openscap::scanner::basedir}/xccdf/${xccdf_name}.sh",
+      user     => 'root',
+      hour     => $hour,
+      minute   => $minute,
+      month    => $month,
+      monthday => $monthday,
+      weekday  => $weekday,
+      require  => File["${openscap::scanner::basedir}/xccdf/${xccdf_name}.sh"],
+    }
   }
 
 }
