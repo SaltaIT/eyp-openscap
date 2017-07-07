@@ -5,9 +5,17 @@ RUN_TIME=$(date +%Y%m%d%H%M)
 oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile %> \
      --results <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html \
      --report <%= scope.lookupvar('openscap::scanner::basedir') %>/reports/<%= @profile %>.${RUN_TIME}.html \
+     <%- if @tailoring -%>
      --tailoring-file <%= scope.lookupvar('openscap::scanner::basedir') %>/profiles/<%= @profile %>.xml \
+     <%- end -%>
+     <%- if @cpe -%>
      --cpe <%= scope.lookupvar('openscap::params::xccdf_cpe') %> \
+     <%- end -%>
+     <%- if @ds -%>
+     <%= scope.lookupvar('openscap::params::xccdf_ds') %> > /dev/null 2>&1
+     <%- else -%>
      <%= scope.lookupvar('openscap::params::xccdf') %> > /dev/null 2>&1
+     <%- end -%>
 
 <% if @generate_remediation_script -%>
 

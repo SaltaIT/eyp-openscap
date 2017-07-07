@@ -21,6 +21,12 @@
 # -rw-r--r--. 1 root root   16689 Mar  3 11:48 ssg-rhel7-cpe-oval.xml
 # -rw-r--r--. 1 root root 1373831 Mar  3 11:48 ssg-rhel7-oval.xml
 #
+# PCI-DSS
+# oscap xccdf eval --report pci-dss-anaconda-report.html \
+#                   --profile xccdf_org.ssgproject.content_profile_pci-dss \
+#                   /usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml
+#
+#
 define openscap::scanner::xccdf (
                                   $profile,
                                   $xccdf_name                  = $name,
@@ -33,6 +39,9 @@ define openscap::scanner::xccdf (
                                   $weekday                     = undef,
                                   $setcron                     = true,
                                   $generate_remediation_script = true,
+                                  $tailoring                   = true,
+                                  $cpe                         = true,
+                                  $ds                          = false,
                                 ) {
 
   include openscap::scanner
