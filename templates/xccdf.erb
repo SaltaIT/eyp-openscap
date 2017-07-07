@@ -12,5 +12,6 @@ oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile 
 <% if @generate_remediation_script -%>
 # remediation script
 oscap xccdf generate fix --output <%= scope.lookupvar('openscap::scanner::basedir') %>/remediation_scripts/remediate-${RUN_TIME}.sh \
+                          --profile <%= @profile %>
                           <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html
 <% end -%>
