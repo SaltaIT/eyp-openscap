@@ -23,15 +23,16 @@
 #
 define openscap::scanner::xccdf (
                                   $profile,
-                                  $xccdf_name = $name,
-                                  $ensure     = 'present',
-                                  $remediate  = false,
-                                  $hour       = '2',
-                                  $minute     = '0',
-                                  $month      = undef,
-                                  $monthday   = undef,
-                                  $weekday    = undef,
-                                  $setcron    = true,
+                                  $xccdf_name                  = $name,
+                                  $ensure                      = 'present',
+                                  $remediate                   = false,
+                                  $hour                        = '2',
+                                  $minute                      = '0',
+                                  $month                       = undef,
+                                  $monthday                    = undef,
+                                  $weekday                     = undef,
+                                  $setcron                     = true,
+                                  $generate_remediation_script = true,
                                 ) {
 
   include openscap::scanner
