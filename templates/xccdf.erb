@@ -10,8 +10,14 @@ oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile 
      <%= scope.lookupvar('openscap::params::xccdf') %> > /dev/null 2>&1
 
 <% if @generate_remediation_script -%>
-# remediation script
-oscap xccdf generate fix --output <%= scope.lookupvar('openscap::scanner::basedir') %>/remediation_scripts/remediate-${RUN_TIME}.sh \
-                          --profile <%= @profile %>
+
+# get testname
+TESTNAME=$(grep -Eo '<TestResult id="[^"]*"' <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html | cut -f 2 -d\")
+
+# generate remediation script
+oscap xccdf generate fix --output <%= scope.lookupvar('openscap::scanner::basedir') %>/remediation_scripts/<%= @profile %>.remediate-${RUN_TIME}.sh \
+                          --profile <%= @profile %> \
+                          --tailoring-file <%= scope.lookupvar('openscap::scanner::basedir') %>/profiles/<%= @profile %>.xml \
+                          --result-id ${TESTNAME} \
                           <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html
 <% end -%>
