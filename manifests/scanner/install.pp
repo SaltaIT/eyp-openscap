@@ -18,9 +18,9 @@ class openscap::scanner::install inherits openscap::scanner {
 
   file { $openscap::scanner::basedir:
     ensure  => 'directory',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0700',
+    owner   => $openscap::scanner::basedir_owner,
+    group   => $openscap::scanner::basedir_group,
+    mode    => $openscap::scanner::basedir_mode,
     require => Exec["openscap scanner mkdir -p ${openscap::scanner::basedir}"],
   }
 
