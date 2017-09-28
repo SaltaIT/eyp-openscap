@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.3
+
+* added configurable file mode for results and reports directories
+
 ## 0.1.2
 
 * added scanner basedir's mode and ownership under puppet management

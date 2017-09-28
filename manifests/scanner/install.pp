@@ -59,7 +59,7 @@ class openscap::scanner::install inherits openscap::scanner {
     ensure  => 'directory',
     owner   => 'root',
     group   => 'root',
-    mode    => '0700',
+    mode    => $openscap::scanner::results_mode,
     require => Exec["openscap scanner mkdir -p ${openscap::scanner::basedir}/results"],
   }
 
@@ -72,7 +72,7 @@ class openscap::scanner::install inherits openscap::scanner {
     ensure  => 'directory',
     owner   => 'root',
     group   => 'root',
-    mode    => '0700',
+    mode    => $openscap::scanner::reports_mode,
     require => Exec["openscap scanner mkdir -p ${openscap::scanner::basedir}/reports"],
   }
 
