@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.4
+
+* added RHEL7 support
+
 ## 0.1.3
 
 * added configurable file mode for results and reports directories

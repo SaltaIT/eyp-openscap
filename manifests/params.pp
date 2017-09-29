@@ -22,6 +22,19 @@ class openscap::params {
               default: { fail("Unsupported CentOS version! - ${::operatingsystemrelease}")  }
             }
           }
+          'RedHat':
+          {
+            case $::operatingsystemrelease
+            {
+              /^7.*$/:
+              {
+                $xccdf = '/usr/share/xml/scap/ssg/content/ssg-rhel7-xccdf.xml'
+                $xccdf_ds = '/usr/share/xml/scap/ssg/content/ssg-rhel7-ds.xml'
+                $xccdf_cpe = '/usr/share/xml/scap/ssg/content/ssg-rhel7-cpe-dictionary.xml'
+              }
+              default: { fail("Unsupported CentOS version! - ${::operatingsystemrelease}")  }
+            }
+          }
           default: { fail('unsupported RH flavor')}
       }
     }
