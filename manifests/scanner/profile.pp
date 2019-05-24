@@ -3,6 +3,7 @@ define openscap::scanner::profile (
                                     $ensure       = 'present',
                                     $source       = undef,
                                     $source_url   = undef,
+                                    $content      = undef,
                                   ) {
 
   include openscap::scanner
@@ -12,7 +13,7 @@ define openscap::scanner::profile (
     fail('source and source_url cannot be both defined for the same resource')
   }
 
-  if($source!=undef)
+  if($source!=undef or $content!=undef)
   {
     file { "${openscap::scanner::basedir}/profiles/${profile_name}.xml":
       ensure  => $ensure,
@@ -21,6 +22,7 @@ define openscap::scanner::profile (
       mode    => '0640',
       require => File["${openscap::scanner::basedir}/profiles"],
       source  => $source,
+      content => $content,
     }
   }
   elsif($source_url!=undef)

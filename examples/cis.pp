@@ -23,5 +23,5 @@ openscap::scanner::xccdf { 'demo':
 }
 
 openscap::scanner::profile { 'demo_basic_security_profile':
-  source => file('openscap/demo.xml'),
+  content => file('openscap/demo.xml'),
 }
