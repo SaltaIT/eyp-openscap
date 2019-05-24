@@ -3,6 +3,7 @@
 ## 0.1.4
 
 * added RHEL7 support
+* added content support for profiles
 
 ## 0.1.3
 
