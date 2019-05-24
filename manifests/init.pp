@@ -1,3 +1,2 @@
-class openscap(
-              ) inherits openscap::params{
+class openscap inherits openscap::params{
 }
