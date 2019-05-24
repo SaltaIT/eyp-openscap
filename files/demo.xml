@@ -41,8 +41,8 @@ baseline.
     <xccdf:select idref="ensure_gpgcheck_globally_activated" selected="true"/>
     <xccdf:select idref="service_rhnsd_disabled" selected="true"/>
     <xccdf:select idref="rpm_verify_hashes" selected="true"/>
-    <xccdf:select idref="package_aide_installed" selected="true"/>
-    <xccdf:select idref="aide_periodic_cron_checking" selected="true"/>
+    <xccdf:select idref="package_aide_installed" selected="false"/>
+    <xccdf:select idref="aide_periodic_cron_checking" selected="false"/>
     <xccdf:select idref="enable_selinux_bootloader" selected="true"/>
     <xccdf:select idref="package_mcstrans_removed" selected="true"/>
     <xccdf:select idref="selinux_confinement_of_daemons" selected="true"/>
