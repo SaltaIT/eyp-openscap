@@ -28,6 +28,12 @@ then
   fi
   ln -s <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html
 
+  if [ -L <%= scope.lookupvar('openscap::scanner::basedir') %>/reports/<%= @profile %>.latest.html ];
+  then
+    unlink <%= scope.lookupvar('openscap::scanner::basedir') %>/reports/<%= @profile %>.latest.html
+  fi
+  ln -s <%= scope.lookupvar('openscap::scanner::basedir') %>/reports/<%= @profile %>.${RUN_TIME}.html <%= scope.lookupvar('openscap::scanner::basedir') %>/reports/<%= @profile %>.latest.html
+
   if [ -L <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.output.latest.txt ];
   then
     unlink <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.output.latest.txt
