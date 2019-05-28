@@ -4,6 +4,7 @@
 
 * added a CIS subset as a demo custom profile
 * added link to latest result
+* fetch remote locations enabled by default
 
 ## 0.1.4
 
