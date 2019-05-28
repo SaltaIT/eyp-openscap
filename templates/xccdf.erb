@@ -15,9 +15,9 @@ oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile 
      --cpe <%= scope.lookupvar('openscap::params::xccdf_cpe') %> \
      <%- end -%>
      <%- if @ds -%>
-     <%= scope.lookupvar('openscap::params::xccdf_ds') %> > /dev/null 2>&1
+     <%= scope.lookupvar('openscap::params::xccdf_ds') %> > <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.output.${RUN_TIME}.txt 2>&1
      <%- else -%>
-     <%= scope.lookupvar('openscap::params::xccdf') %> > /dev/null 2>&1
+     <%= scope.lookupvar('openscap::params::xccdf') %> > <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.output.${RUN_TIME}.txt 2>&1
      <%- end -%>
 
 if [ ! -f "<%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html" ];
