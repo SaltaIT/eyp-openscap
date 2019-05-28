@@ -20,21 +20,27 @@ oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile 
      <%= scope.lookupvar('openscap::params::xccdf') %> > /dev/null 2>&1
      <%- end -%>
 
-<% if @generate_remediation_script -%>
+EVAL_RESULT=$?
 
-# get testname
-TESTNAME=$(grep -Eo '<TestResult id="[^"]*"' <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html | cut -f 2 -d\")
-
-# generate remediation script
-oscap xccdf generate fix --output <%= scope.lookupvar('openscap::scanner::basedir') %>/remediation_scripts/<%= @profile %>.remediate-${RUN_TIME}.sh \
-                          --profile <%= @profile %> \
-                          --tailoring-file <%= scope.lookupvar('openscap::scanner::basedir') %>/profiles/<%= @profile %>.xml \
-                          --result-id ${TESTNAME} \
-                          <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html
-
-if [ -L <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html ];
+if [ ${EVAL_RESULT} -eq 0 ];
 then
-  unlink <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html
+ if [ -L <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html ];
+ then
+   unlink <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html
+ fi
+ ln -s <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html
+  <%- if @generate_remediation_script -%>
+  # get testname
+  TESTNAME=$(grep -Eo '<TestResult id="[^"]*"' <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html | cut -f 2 -d\")
+
+  # generate remediation script
+  oscap xccdf generate fix --output <%= scope.lookupvar('openscap::scanner::basedir') %>/remediation_scripts/<%= @profile %>.remediate-${RUN_TIME}.sh \
+                            --profile <%= @profile %> \
+                            --tailoring-file <%= scope.lookupvar('openscap::scanner::basedir') %>/profiles/<%= @profile %>.xml \
+                            --result-id ${TESTNAME} \
+                            <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html
+  <%- end -%>
+else
+  echo "ERROR RUNNING oscap"
+  exit 3
 fi
-ln -s <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html
-<% end -%>
