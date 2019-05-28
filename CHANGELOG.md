@@ -5,6 +5,7 @@
 * added a CIS subset as a demo custom profile
 * added link to latest result
 * fetch remote locations enabled by default
+* improved oscap script
 
 ## 0.1.4
 
