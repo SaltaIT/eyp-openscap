@@ -5,6 +5,14 @@
   <xccdf:Profile id="cis_subset">
     <xccdf:title xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">cis_subset</xccdf:title>
     <xccdf:description xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">CIS subset</xccdf:description>
+    <xccdf:select idref="kernel_module_cramfs_disabled" selected="true"/>
+    <xccdf:select idref="kernel_module_freevxfs_disabled" selected="true"/>
+    <xccdf:select idref="kernel_module_jffs2_disabled" selected="true"/>
+    <xccdf:select idref="kernel_module_hfs_disabled" selected="true"/>
+    <xccdf:select idref="kernel_module_hfsplus_disabled" selected="true"/>
+    <xccdf:select idref="kernel_module_squashfs_disabled" selected="true"/>
+    <xccdf:select idref="kernel_module_udf_disabled" selected="true"/>
+    <!-- vfat -->
     <xccdf:select idref="partition_for_tmp" selected="true"/>
     <xccdf:select idref="mount_option_tmp_nodev" selected="true"/>
     <xccdf:select idref="mount_option_tmp_nosuid" selected="true"/>
@@ -21,13 +29,6 @@
     <xccdf:select idref="mount_option_dev_shm_nosuid" selected="true"/>
     <xccdf:select idref="mount_option_dev_shm_noexec" selected="true"/>
     <xccdf:select idref="dir_perms_world_writable_sticky_bits" selected="true"/>
-    <xccdf:select idref="kernel_module_cramfs_disabled" selected="true"/>
-    <xccdf:select idref="kernel_module_freevxfs_disabled" selected="true"/>
-    <xccdf:select idref="kernel_module_jffs2_disabled" selected="true"/>
-    <xccdf:select idref="kernel_module_hfs_disabled" selected="true"/>
-    <xccdf:select idref="kernel_module_hfsplus_disabled" selected="true"/>
-    <xccdf:select idref="kernel_module_squashfs_disabled" selected="true"/>
-    <xccdf:select idref="kernel_module_udf_disabled" selected="true"/>
     <xccdf:select idref="ensure_gpgcheck_globally_activated" selected="true"/>
     <xccdf:select idref="service_rhnsd_disabled" selected="true"/>
     <xccdf:select idref="rpm_verify_hashes" selected="true"/>
@@ -317,7 +318,7 @@
     <xccdf:select idref="package_dhcp_removed" selected="false"/>
     <xccdf:select idref="service_dhcpd_disabled" selected="true"/>
     <xccdf:select idref="disabling_dhcp_client" selected="true"/>
-    <xccdf:select idref="sysconfig_networking_bootproto_ifcfg" selected="true"/>
+    <xccdf:select idref="sysconfig_networking_bootproto_ifcfg" selected="false"/>
     <xccdf:select idref="ensure_redhat_gpgkey_installed" selected="false"/>
     <xccdf:select idref="aide_build_database" selected="false"/>
     <xccdf:select idref="sudo" selected="true"/>
