@@ -22,7 +22,7 @@ oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile 
 
 EVAL_RESULT=$?
 
-if [ ${EVAL_RESULT} -eq 0 ];
+if [ ! -f "<%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html" ];
 then
  if [ -L <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html ];
  then
@@ -41,6 +41,6 @@ then
                             <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html
   <%- end -%>
 else
-  echo "ERROR RUNNING oscap"
+  echo "ERROR RUNNING oscap - file <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html NOT FOUND"
   exit 3
 fi
