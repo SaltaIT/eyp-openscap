@@ -6,6 +6,7 @@
 * added link to latest result
 * fetch remote locations enabled by default
 * improved oscap script
+  - create link to latest report
 
 ## 0.1.4
 
