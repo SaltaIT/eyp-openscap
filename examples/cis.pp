@@ -16,7 +16,7 @@ class { 'openscap::scanner':
   reports_mode => '0755',
 }
 
-openscap::scanner::xccdf { 'demo':
+openscap::scanner::xccdf { 'cis_subset':
   profile => 'cis_subset',
   hour    => '0',
   minute  => '0',
