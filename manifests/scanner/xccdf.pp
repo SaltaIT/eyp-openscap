@@ -32,6 +32,7 @@ define openscap::scanner::xccdf (
                                   $xccdf_name                  = $name,
                                   $ensure                      = 'present',
                                   $remediate                   = false,
+                                  $fetch_remote_resources      = true,
                                   $hour                        = '2',
                                   $minute                      = '0',
                                   $month                       = undef,

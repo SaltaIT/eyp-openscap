@@ -36,8 +36,8 @@
     <xccdf:select idref="enable_selinux_bootloader" selected="false"/>
     <xccdf:select idref="package_mcstrans_removed" selected="true"/>
     <xccdf:select idref="selinux_confinement_of_daemons" selected="false"/>
-    <xccdf:select idref="file_user_owner_grub2_conf" selected="true"/>
-    <xccdf:select idref="file_group_owner_grub2_conf" selected="true"/>
+    <xccdf:select idref="file_user_owner_grub2_cfg" selected="true"/>
+    <xccdf:select idref="file_group_owner_grub2_cfg" selected="true"/>
     <xccdf:select idref="file_permissions_grub2_cfg" selected="true"/>
     <xccdf:select idref="disable_users_coredumps" selected="true"/>
     <xccdf:select idref="sysctl_fs_suid_dumpable" selected="true"/>

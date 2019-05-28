@@ -8,6 +8,9 @@ oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile 
      <%- if @tailoring -%>
      --tailoring-file <%= scope.lookupvar('openscap::scanner::basedir') %>/profiles/<%= @profile %>.xml \
      <%- end -%>
+     <%- if @fetch_remote_resources -%>
+     --fetch-remote-resources \
+     <%- end -%>
      <%- if @cpe -%>
      --cpe <%= scope.lookupvar('openscap::params::xccdf_cpe') %> \
      <%- end -%>
