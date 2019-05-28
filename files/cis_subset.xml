@@ -2,19 +2,9 @@
 <cdf-11-tailoring:Tailoring xmlns:cdf-11-tailoring="http://open-scap.org/page/Xccdf-1.1-tailoring" xmlns:xccdf="http://checklists.nist.gov/xccdf/1.1" id="xccdf_scap-workbench_tailoring_default">
   <cdf-11-tailoring:benchmark href="/home/systemadmin/oscap/ssg-centos7-xccdf.xml"/>
   <cdf-11-tailoring:version time="2016-12-14T12:18:28">1</cdf-11-tailoring:version>
-  <xccdf:Profile id="demo_basic_security_profile">
-    <xccdf:title xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">demo_basic_security_profile</xccdf:title>
-    <xccdf:description xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">This profile demonstrates compliance against the
-U.S. Government Commercial Cloud Services (C2S) baseline.
-
-This baseline was inspired by the Center for Internet Security
-(CIS) CentOS Linux 7 Benchmark, v1.1.0 - 04-02-2015.
-For the SCAP Security Guide project to remain in compliance with
-CIS' terms and conditions, specifically Restrictions(8), note
-there is no representation or claim that the C2S profile will
-ensure a system is in compliance or consistency with the CIS
-baseline.
-</xccdf:description>
+  <xccdf:Profile id="CIS_subset">
+    <xccdf:title xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">CIS_subset</xccdf:title>
+    <xccdf:description xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">CIS subset</xccdf:description>
     <xccdf:select idref="partition_for_tmp" selected="true"/>
     <xccdf:select idref="mount_option_tmp_nodev" selected="true"/>
     <xccdf:select idref="mount_option_tmp_nosuid" selected="true"/>
@@ -46,8 +36,8 @@ baseline.
     <xccdf:select idref="enable_selinux_bootloader" selected="false"/>
     <xccdf:select idref="package_mcstrans_removed" selected="true"/>
     <xccdf:select idref="selinux_confinement_of_daemons" selected="false"/>
-    <xccdf:select idref="file_user_owner_grub2_cfg" selected="true"/>
-    <xccdf:select idref="file_group_owner_grub2_cfg" selected="true"/>
+    <xccdf:select idref="file_user_owner_grub2_conf" selected="true"/>
+    <xccdf:select idref="file_group_owner_grub2_conf" selected="true"/>
     <xccdf:select idref="file_permissions_grub2_cfg" selected="true"/>
     <xccdf:select idref="disable_users_coredumps" selected="true"/>
     <xccdf:select idref="sysctl_fs_suid_dumpable" selected="true"/>

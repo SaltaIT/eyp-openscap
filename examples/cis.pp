@@ -17,11 +17,11 @@ class { 'openscap::scanner':
 }
 
 openscap::scanner::xccdf { 'demo':
-  profile => 'demo_basic_security_profile',
+  profile => 'cis_subset',
   hour    => '0',
   minute  => '0',
 }
 
-openscap::scanner::profile { 'demo_basic_security_profile':
-  content => file('openscap/demo.xml'),
+openscap::scanner::profile { 'cis_subset':
+  content => file('openscap/cis_subset.xml'),
 }
