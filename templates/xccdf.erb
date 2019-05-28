@@ -45,6 +45,11 @@ then
                             --result-id ${TESTNAME} \
                             <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html
   <%- end -%>
+
+  #
+  # show summary
+  #
+  grep Result <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.output.${RUN_TIME}.txt | strings | paste - - | awk '{ print $2 }' | sort | uniq -c | sort -nr
 else
   echo "ERROR RUNNING oscap - file <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html NOT FOUND"
   exit 3

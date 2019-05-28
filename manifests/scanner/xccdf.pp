@@ -39,7 +39,7 @@ define openscap::scanner::xccdf (
                                   $monthday                    = undef,
                                   $weekday                     = undef,
                                   $setcron                     = true,
-                                  $generate_remediation_script = true,
+                                  $generate_remediation_script = false,
                                   $tailoring                   = true,
                                   $cpe                         = true,
                                   $ds                          = false,
