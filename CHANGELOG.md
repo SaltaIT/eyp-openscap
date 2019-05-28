@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.1.5
+
+* added a CIS subset as a demo custom profile
+* added link to latest result
+
 ## 0.1.4
 
 * added RHEL7 support

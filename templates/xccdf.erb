@@ -28,4 +28,10 @@ oscap xccdf generate fix --output <%= scope.lookupvar('openscap::scanner::basedi
                           --tailoring-file <%= scope.lookupvar('openscap::scanner::basedir') %>/profiles/<%= @profile %>.xml \
                           --result-id ${TESTNAME} \
                           <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html
+
+if [ -L <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html ];
+then
+  unlink <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html
+fi
+ln -s <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html
 <% end -%>
