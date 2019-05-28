@@ -22,11 +22,18 @@ oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile 
 
 if [ -f "<%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html" ];
 then
- if [ -L <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html ];
- then
+  if [ -L <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html ];
+  then
    unlink <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html
- fi
- ln -s <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html
+  fi
+  ln -s <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html
+
+  if [ -L <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.output.latest.txt ];
+  then
+   unlink <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.output.latest.txt
+  fi
+  ln -s <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.output.${RUN_TIME}.txt <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.output.latest.txt
+
   <%- if @generate_remediation_script -%>
   # get testname
   TESTNAME=$(grep -Eo '<TestResult id="[^"]*"' <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html | cut -f 2 -d\")
