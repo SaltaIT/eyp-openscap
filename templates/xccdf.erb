@@ -20,7 +20,7 @@ oscap xccdf eval <% if @remediate %>--remediate<% end %> --profile <%= @profile 
      <%= scope.lookupvar('openscap::params::xccdf') %> > <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.output.${RUN_TIME}.txt 2>&1
      <%- end -%>
 
-if [ ! -f "<%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html" ];
+if [ -f "<%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.${RUN_TIME}.html" ];
 then
  if [ -L <%= scope.lookupvar('openscap::scanner::basedir') %>/results/<%= @profile %>.latest.html ];
  then
