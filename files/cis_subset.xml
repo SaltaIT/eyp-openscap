@@ -3,7 +3,7 @@
   <cdf-11-tailoring:benchmark href="/home/systemadmin/oscap/ssg-centos7-xccdf.xml"/>
   <cdf-11-tailoring:version time="2016-12-14T12:18:28">1</cdf-11-tailoring:version>
   <xccdf:Profile id="CIS_subset">
-    <xccdf:title xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">CIS_subset</xccdf:title>
+    <xccdf:title xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">cis_subset</xccdf:title>
     <xccdf:description xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">CIS subset</xccdf:description>
     <xccdf:select idref="partition_for_tmp" selected="true"/>
     <xccdf:select idref="mount_option_tmp_nodev" selected="true"/>
