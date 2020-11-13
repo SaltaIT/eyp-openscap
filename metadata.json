@@ -1,6 +1,6 @@
 {
   "name": "eyp-openscap",
-  "version": "0.1.5",
+  "version": "1.0.5",
   "author": "Jordi Prats",
   "summary": "openscap scanner",
   "license": "Apache-2.0",
